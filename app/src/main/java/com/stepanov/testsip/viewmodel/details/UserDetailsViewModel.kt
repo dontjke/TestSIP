@@ -18,7 +18,7 @@ class UserDetailsViewModel (
     fun getLiveData() = liveData
 
 
-    fun getUser(id: Int) {
+    fun getUser() {
         liveData.postValue(UsersState.Loading)
         defaultUserRepository.getUsersFromServer( this)
     }

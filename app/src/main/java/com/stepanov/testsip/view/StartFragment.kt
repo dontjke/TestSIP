@@ -32,6 +32,13 @@ class StartFragment : Fragment() {
                 .addToBackStack("")
                 .commit()
         }
+        binding.videoButton.setOnClickListener {
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .add(R.id.container,VideoFragment.newInstance())
+                .addToBackStack("")
+                .commit()
+        }
     }
 
     companion object {

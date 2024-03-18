@@ -23,7 +23,7 @@ class UserDetailsFragment : Fragment() {
     private val userDetailsViewModel: UserDetailsViewModel by lazy {
         ViewModelProvider(this)[UserDetailsViewModel::class.java]
     }
-    private var userIdBundle: Int = 1
+    private var userIdBundle: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +39,7 @@ class UserDetailsFragment : Fragment() {
 
         val observer = { data: UsersState -> renderData(data) }
         userDetailsViewModel.getLiveData().observe(viewLifecycleOwner, observer)
-        userDetailsViewModel.getUser(userIdBundle)
+        userDetailsViewModel.getUser()
     }
 
     private fun renderData(data: UsersState) {
