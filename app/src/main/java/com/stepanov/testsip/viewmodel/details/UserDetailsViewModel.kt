@@ -1,4 +1,4 @@
-package com.stepanov.testsip.viewmodel
+package com.stepanov.testsip.viewmodel.details
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -6,18 +6,21 @@ import com.stepanov.testsip.repository.CallbackUsers
 import com.stepanov.testsip.repository.DefaultUserRepository
 import com.stepanov.testsip.repository.RemoteDataSource
 import com.stepanov.testsip.repository.dto.ResponseApiItem
+import com.stepanov.testsip.viewmodel.users.UsersState
 
-class UsersViewModel(
+class UserDetailsViewModel (
     private val liveData: MutableLiveData<UsersState> = MutableLiveData(),
     private val defaultUserRepository: DefaultUserRepository = DefaultUserRepository(
         RemoteDataSource()
     )
 ) : ViewModel(), CallbackUsers {
+
     fun getLiveData() = liveData
 
-    fun getUsers() {
+
+    fun getUser(id: Int) {
         liveData.postValue(UsersState.Loading)
-        defaultUserRepository.getUsersFromServer(this)
+        defaultUserRepository.getUsersFromServer( this)
     }
 
     override fun onResponse(usersList: List<ResponseApiItem>) {
@@ -28,4 +31,3 @@ class UsersViewModel(
         liveData.postValue(UsersState.Error(t))
     }
 }
-

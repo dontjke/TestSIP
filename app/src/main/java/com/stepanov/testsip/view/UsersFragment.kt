@@ -10,18 +10,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.stepanov.testsip.R
 import com.stepanov.testsip.databinding.FragmentUsersBinding
+import com.stepanov.testsip.utils.KEY_BUNDLE_USER
+import com.stepanov.testsip.view.adapter.OnUserClickListener
 import com.stepanov.testsip.view.adapter.UsersRecyclerViewAdapter
-import com.stepanov.testsip.viewmodel.UsersState
-import com.stepanov.testsip.viewmodel.UsersViewModel
+import com.stepanov.testsip.viewmodel.users.UsersState
+import com.stepanov.testsip.viewmodel.users.UsersViewModel
 
-class UsersFragment : Fragment() {
+class UsersFragment : Fragment(), OnUserClickListener {
     private var _binding: FragmentUsersBinding? = null
     private val binding: FragmentUsersBinding
         get() {
             return _binding!!
         }
 
-    private val adapter = UsersRecyclerViewAdapter()
+    private val adapter = UsersRecyclerViewAdapter(this)
     private val usersViewModel: UsersViewModel by lazy {
         ViewModelProvider(this)[UsersViewModel::class.java]
     }
@@ -76,5 +78,15 @@ class UsersFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onItemClick(id: Int) {
+       requireActivity().supportFragmentManager
+           .beginTransaction()
+           .add(R.id.container,UserDetailsFragment.newInstance(Bundle().apply {
+               putInt(KEY_BUNDLE_USER, id)
+           }))
+           .addToBackStack("")
+           .commit()
     }
 }

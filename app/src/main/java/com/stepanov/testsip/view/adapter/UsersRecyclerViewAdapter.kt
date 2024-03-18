@@ -10,6 +10,7 @@ import com.stepanov.testsip.databinding.UsersRecyclerItemBinding
 import com.stepanov.testsip.repository.dto.ResponseApiItem
 
 class UsersRecyclerViewAdapter(
+    private val onUserClickListener: OnUserClickListener,
     private var data: List<ResponseApiItem> = listOf()
 ) : RecyclerView.Adapter<UsersRecyclerViewAdapter.UsersHolder>() {
 
@@ -39,11 +40,12 @@ class UsersRecyclerViewAdapter(
     inner class UsersHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(users: ResponseApiItem) {
             UsersRecyclerItemBinding.bind(itemView).apply {
-                nameTextView.text = buildString {
-                    append("name: ")
-                    append(users.name)
+                nameTextView.text = itemView.context.getString(R.string.name_adapter, users.name)
+
+                phoneTextView.text = itemView.context.getString(R.string.phone_adapter, users.phone)
+                root.setOnClickListener {
+                    onUserClickListener.onItemClick(users.id - 1)
                 }
-                phoneTextView.text = itemView.context.getString(R.string.phoneAdapter, users.phone)
             }
         }
     }

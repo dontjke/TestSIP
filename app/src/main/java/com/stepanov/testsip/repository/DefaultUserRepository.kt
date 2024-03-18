@@ -7,8 +7,4 @@ class DefaultUserRepository(
         remoteDataSource.getUsers(callbackUsers)
     }
 
-    override fun getUserDetails() {
-        TODO("Not yet implemented")
-    }
-
 }

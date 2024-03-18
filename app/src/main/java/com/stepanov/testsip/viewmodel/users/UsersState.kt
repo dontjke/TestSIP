@@ -1,4 +1,4 @@
-package com.stepanov.testsip.viewmodel
+package com.stepanov.testsip.viewmodel.users
 
 import com.stepanov.testsip.repository.dto.ResponseApiItem
 
