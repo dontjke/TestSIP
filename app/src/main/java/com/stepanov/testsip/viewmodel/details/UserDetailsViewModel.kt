@@ -8,7 +8,7 @@ import com.stepanov.testsip.repository.RemoteDataSource
 import com.stepanov.testsip.repository.dto.ResponseApiItem
 import com.stepanov.testsip.viewmodel.users.UsersState
 
-class UserDetailsViewModel (
+class UserDetailsViewModel(
     private val liveData: MutableLiveData<UsersState> = MutableLiveData(),
     private val defaultUserRepository: DefaultUserRepository = DefaultUserRepository(
         RemoteDataSource()
@@ -20,7 +20,7 @@ class UserDetailsViewModel (
 
     fun getUser() {
         liveData.postValue(UsersState.Loading)
-        defaultUserRepository.getUsersFromServer( this)
+        defaultUserRepository.getUsersFromServer(this)
     }
 
     override fun onResponse(usersList: List<ResponseApiItem>) {

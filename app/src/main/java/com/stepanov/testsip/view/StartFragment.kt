@@ -26,19 +26,19 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.usersButton.setOnClickListener {
-            requireActivity().supportFragmentManager
-                .beginTransaction()
-                .add(R.id.container, UsersFragment.newInstance())
-                .addToBackStack("")
-                .commit()
+            launchFragment(UsersFragment.newInstance())
         }
         binding.videoButton.setOnClickListener {
-            requireActivity().supportFragmentManager
-                .beginTransaction()
-                .add(R.id.container,VideoFragment.newInstance())
-                .addToBackStack("")
-                .commit()
+            launchFragment(VideoFragment.newInstance())
         }
+    }
+
+    private fun launchFragment(fragment: Fragment) {
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .add(R.id.container, fragment)
+            .addToBackStack("")
+            .commit()
     }
 
     companion object {

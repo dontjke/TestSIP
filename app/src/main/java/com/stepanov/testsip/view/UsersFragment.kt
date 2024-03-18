@@ -81,12 +81,12 @@ class UsersFragment : Fragment(), OnUserClickListener {
     }
 
     override fun onItemClick(id: Int) {
-       requireActivity().supportFragmentManager
-           .beginTransaction()
-           .add(R.id.container,UserDetailsFragment.newInstance(Bundle().apply {
-               putInt(KEY_BUNDLE_USER, id)
-           }))
-           .addToBackStack("")
-           .commit()
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .add(R.id.container, UserDetailsFragment.newInstance(Bundle().apply {
+                putInt(KEY_BUNDLE_USER, id)
+            }))
+            .addToBackStack("")
+            .commit()
     }
 }

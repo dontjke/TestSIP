@@ -31,7 +31,6 @@ class UsersRecyclerViewAdapter(
 
     override fun getItemCount(): Int = data.size
 
-
     override fun onBindViewHolder(holder: UsersHolder, position: Int) {
         holder.bind(data[position])
     }
