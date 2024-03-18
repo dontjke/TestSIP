@@ -12,10 +12,10 @@ class UsersViewModel(
     private val defaultUserRepository: DefaultUserRepository = DefaultUserRepository(
         RemoteDataSource()
     )
-): ViewModel(), CallbackUsers{
+) : ViewModel(), CallbackUsers {
     fun getLiveData() = liveData
 
-    fun getUsers(){
+    fun getUsers() {
         liveData.postValue(UsersState.Loading)
         defaultUserRepository.getUsersFromServer(this)
     }
@@ -25,7 +25,7 @@ class UsersViewModel(
     }
 
     override fun onFailure(t: Throwable) {
-       liveData.postValue(UsersState.Error(t))
+        liveData.postValue(UsersState.Error(t))
     }
 }
 

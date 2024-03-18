@@ -2,4 +2,9 @@
     <string name="app_name">TestSIP</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="users">Пользователь</string>
+    <string name="video">Видеоролик</string>
+    <string name="error">loading error no internet connection</string>
+    <string name="phone">телефон</string>
+    <string name="phoneAdapter">phone: %1$s</string>
 </resources>

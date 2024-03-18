@@ -1,0 +1,5 @@
+package com.stepanov.testsip.utils
+
+const val SERVER_ERROR = "Ошибка сервера"
+const val REQUEST_ERROR = "Ошибка запроса на сервер"
+const val BASE_URL = "https://jsonplaceholder.typicode.com"
